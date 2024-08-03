@@ -17,9 +17,9 @@ class TransactionList extends StatelessWidget {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromRGBO(112, 191, 235, 150),
-                      spreadRadius: 1,
-                      blurRadius: 5,
+                      color:Colors.white,
+                      spreadRadius: -5,
+                      blurRadius: 8,
                       offset: Offset(1, 1), // Muda a posição da sombra
                     ),
                   ],
@@ -44,6 +44,7 @@ class TransactionList extends StatelessWidget {
             itemBuilder: (ctx, index) {
               final tr = transactions[index];
               return Card(
+                color: Colors.white54,
                 elevation: 5,
                 margin: EdgeInsets.symmetric(
                   vertical: 8,

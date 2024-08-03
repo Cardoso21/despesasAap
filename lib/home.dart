@@ -68,21 +68,24 @@ class _MyHomoPageState extends State<MyHomoPage> {
         ),
       ],
     );
-    final availableHeigth = MediaQuery.of(context).size.height -
+    final availableHeight = MediaQuery.of(context).size.height -
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
+
     return Scaffold(
       appBar: appBar,
+      backgroundColor: Color.fromRGBO(110, 141, 220, 1.0),
+      // Defina a cor de fundo aqui
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              height: availableHeigth * 0.3,
+              height: availableHeight * 0.3,
               child: Chart(_recentTransactions),
             ),
             Container(
-              height: availableHeigth * 0.7,
+              height: availableHeight * 0.7,
               child: TransactionList(_transactions, _deleteTransaction),
             ),
           ],

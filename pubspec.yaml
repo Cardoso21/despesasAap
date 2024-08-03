@@ -23,6 +23,7 @@ flutter:
   assets:
   # Adicione aqui seus assets, se houver
    - assets/images/zzz.png
+   - assets/images/dinheiro.avif
   # - images/a_dot_ham.jpeg
 
   fonts:
