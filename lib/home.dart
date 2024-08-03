@@ -13,9 +13,7 @@ class MyHomoPage extends StatefulWidget {
 }
 
 class _MyHomoPageState extends State<MyHomoPage> {
-  final List<Transaction> _transactions = [
-
-  ];
+  final List<Transaction> _transactions = [];
 
   List<Transaction> get _recentTransactions {
     return _transactions.where((tr) {
@@ -58,7 +56,11 @@ class _MyHomoPageState extends State<MyHomoPage> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: const Text('Despesas Pessoais'),
+      title: Center(
+        child: Text(
+          'Despesas Pessoais',
+        ),
+      ),
       actions: [
         IconButton(
           icon: const Icon(Icons.add),

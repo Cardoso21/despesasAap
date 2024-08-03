@@ -77,7 +77,7 @@ class _TransactionFormState extends State<TransactionForm> {
                 IconButton(
                   icon: Icon(
                     Icons.calendar_month,
-                    color: Colors.teal,
+                    color:  Color.fromRGBO(25, 162, 238, 1.0),
                   ),
                   onPressed: _showDatePicker,
                 ),
@@ -91,7 +91,7 @@ class _TransactionFormState extends State<TransactionForm> {
                   child: Text(
                     'Nova Transação',
                     style: TextStyle(
-                        color: Colors.teal, fontWeight: FontWeight.bold),
+                        color:  Color.fromRGBO(25, 162, 238, 1.0), fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
