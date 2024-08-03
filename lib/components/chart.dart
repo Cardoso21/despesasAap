@@ -43,7 +43,7 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Color.fromRGBO(156, 211, 218, 1.0),
-      shadowColor: Colors.pink,
+      shadowColor: Color.fromRGBO(77, 76, 76, 1.0),
       elevation: 15,
       margin: const EdgeInsets.all(20),
       child: Padding(

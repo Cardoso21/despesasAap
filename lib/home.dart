@@ -68,6 +68,7 @@ class _MyHomoPageState extends State<MyHomoPage> {
         ),
       ],
     );
+
     final availableHeight = MediaQuery.of(context).size.height -
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
@@ -76,26 +77,52 @@ class _MyHomoPageState extends State<MyHomoPage> {
       appBar: appBar,
       backgroundColor: Color.fromRGBO(110, 141, 220, 1.0),
       // Defina a cor de fundo aqui
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              height: availableHeight * 0.3,
-              child: Chart(_recentTransactions),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  height: availableHeight * 0.3,
+                  child: Chart(_recentTransactions),
+                ),
+                Container(
+                  height: availableHeight * 0.7,
+                  child: TransactionList(_transactions, _deleteTransaction),
+                ),
+              ],
             ),
-            Container(
-              height: availableHeight * 0.7,
-              child: TransactionList(_transactions, _deleteTransaction),
+          ),
+          Positioned(
+            bottom: 20,
+            left: MediaQuery.of(context).size.width / 2 - 28, // Centralizar o botão
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color:  Color.fromRGBO(77, 76, 76, 0.5),
+                    spreadRadius: 4,
+                    blurRadius: 8,
+                    offset: Offset(1, 3), // Offset da sombra
+                  ),
+                ],
+              ),
+              child: ElevatedButton(
+                onPressed: () => _openTransactionFormModal(context),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+                  padding: EdgeInsets.all(20), // ajuste o padding conforme necessário
+                  elevation: 0, // Remove a elevação padrão do ElevatedButton
+                ),
+                child: Icon(Icons.add, size: 30, color: Colors.white),
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () => _openTransactionFormModal(context),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
