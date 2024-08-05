@@ -44,59 +44,67 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            TextField(
-              controller: _titleController,
-              onSubmitted: (_) => _submitForm(), // Corrigido para _submitForm
-              decoration: InputDecoration(
-                labelText: 'Título',
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Padding(
+          padding:  EdgeInsets.only(
+            top: 15,
+            right: 15,
+            left: 15,
+            bottom: 15 + MediaQuery.of(context).viewInsets.bottom
+          ),
+          child: Column(
+            children: [
+              TextField(
+                controller: _titleController,
+                onSubmitted: (_) => _submitForm(), // Corrigido para _submitForm
+                decoration: InputDecoration(
+                  labelText: 'Título',
+                ),
               ),
-            ),
-            TextField(
-              controller: _valueController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              onSubmitted: (_) => _submitForm(), // Corrigido para _submitForm
-              decoration: InputDecoration(
-                labelText: 'Valor (R\$)',
+              TextField(
+                controller: _valueController,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                onSubmitted: (_) => _submitForm(), // Corrigido para _submitForm
+                decoration: InputDecoration(
+                  labelText: 'Valor (R\$)',
+                ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  _selectDate == null
-                      ? 'Nenhuma data selecionada!'
-                      : 'Data selecionada: ${DateFormat('d/M/y').format(_selectDate!)}',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.calendar_month,
-                    color:  Color.fromRGBO(25, 162, 238, 1.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    _selectDate == null
+                        ? 'Nenhuma data selecionada!'
+                        : 'Data selecionada: ${DateFormat('d/M/y').format(_selectDate!)}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  onPressed: _showDatePicker,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: _submitForm, // Corrigido para _submitForm
-                  child: Text(
-                    'Nova Transação',
-                    style: TextStyle(
-                        color:  Color.fromRGBO(25, 162, 238, 1.0), fontWeight: FontWeight.bold),
+                  IconButton(
+                    icon: Icon(
+                      Icons.calendar_month,
+                      color: Color.fromRGBO(25, 162, 238, 1.0),
+                    ),
+                    onPressed: _showDatePicker,
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: _submitForm, // Corrigido para _submitForm
+                    child: Text(
+                      'Nova Transação',
+                      style: TextStyle(
+                          color: Color.fromRGBO(25, 162, 238, 1.0),
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

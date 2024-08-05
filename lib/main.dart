@@ -26,8 +26,7 @@ class DespesasApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
       ),
-      home:
-          MyHomoPage(), // Certifique-se de que a classe esteja nomeada corretamente
+      home: MyHomePage(), // Certifique-se de que a classe esteja nomeada corretamente
     );
   }
 }

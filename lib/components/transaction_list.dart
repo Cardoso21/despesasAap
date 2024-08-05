@@ -11,33 +11,37 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return transactions.isEmpty
-        ? Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color:Colors.white,
-                      spreadRadius: -5,
-                      blurRadius: 8,
-                      offset: Offset(1, 1), // Muda a posição da sombra
+        ? LayoutBuilder(
+            builder: (ctx, constraints) {
+              return Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white,
+                          spreadRadius: -5,
+                          blurRadius: 8,
+                          offset: Offset(1, 1), // Muda a posição da sombra
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                child: Text(
-                  'Nenhuma Transação Cadastrada',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    child: Text(
+                      'Nenhuma Transação Cadastrada',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-
-              Container(
-                height: 350,
-                child: Image.asset('assets/images/zzz.png', fit: BoxFit.cover),
-              ),
-            ],
+                  Container(
+                    height: constraints.maxHeight * 0.7,
+                    child:
+                        Image.asset('assets/images/zzz.png', fit: BoxFit.cover),
+                  ),
+                ],
+              );
+            },
           )
         : ListView.builder(
             itemCount: transactions.length,
@@ -52,7 +56,8 @@ class TransactionList extends StatelessWidget {
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+                    backgroundColor:
+                        Theme.of(context).appBarTheme.backgroundColor,
                     radius: 30,
                     child: Padding(
                       padding: const EdgeInsets.all(6.0),
